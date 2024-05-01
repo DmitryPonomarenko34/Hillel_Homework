@@ -7,16 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        const value = 10369;
+        let result = 0;
+        let string = '';
 
-        const modifyValue = value.toString().split('').join(' ');
+        for (let i = 1; i <= 500; i++) {
+           result = (result + i) / i;
 
-        console.log(modifyValue);
+           string += `${result}, `
+        }
+
+        console.log(string)
+
     </script>
 </head>
 <body>
-    Розкласти за цифрами п'ятизначне число і вивести у вихідному порядку через пробіл. Приклад:
-
+    Розкласти за цифрами п'ятизначне   число і вивести у вихідному порядку через пробіл. Приклад:
+            <span></span>
     10369
 
     1 0 3 6 9
