@@ -1,4 +1,4 @@
-function Contact(contact) {
+function Contact() {
     this.contacts = {
         items: [{name: 'євген', phone: +380993121739, email: 'eugene@gmail.com'}],
     };
@@ -20,4 +20,4 @@ const contact = new Contact();
 
 contact.createContact();
 
-contact.findContact();
+contact.findContact('євген');
