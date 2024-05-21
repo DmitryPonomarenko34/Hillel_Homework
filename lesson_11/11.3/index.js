@@ -1,23 +1,19 @@
-function Contact() {
-    this.contacts = {
-        items: [{name: 'євген', phone: +380993121739, email: 'eugene@gmail.com'}],
-    };
+const btn = document.querySelector('#btn');
+const img = document.querySelector('#img');
 
-    this.findContact = function (name) {
-        return this.contacts.items.find((contact) => contact.name === name);
-    };
+function setSrcAttr() {
+    const randomNum = Math.floor(Math.random() * (7 - 1 + 1) + 1);
 
-    this.createContact = function () {
-        const name = prompt("Введіть ім\'я").toLowerCase().trim();
-        const phone = +prompt("Введіть номер телефону");
-        const email = prompt("Введіть емейл").toLowerCase().trim();
+    img.setAttribute('src', `${randomNum}.jpg`);
 
-        this.contacts.items.push({name, phone, email});
-    }
+    console.log('ra', randomNum);
+    
 }
 
-const contact = new Contact();
+window.onload = function () {
+    setSrcAttr();
 
-contact.createContact();
-
-contact.findContact('євген');
+    btn.addEventListener('click', function () {
+        setSrcAttr();
+    })
+};
