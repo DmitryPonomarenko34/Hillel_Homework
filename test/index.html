@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <table id="table">
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Age</th>
+      <th>Action</th>
+    </tr>
+  </table>
+  <button id="createBtn">Add user</button>
+  <div id="modal">
+    <form id="create" action="#">
+      <input name="name" type="text" placeholder="Name">
+      <input name="phone" type="number" placeholder="Phone">
+      <input name="age" type="number" placeholder="Age">
+      <button type="submit">Save</button>
+    </form>
+    <form id="edit" action="#">
+      <input name="name" type="text" placeholder="Name">
+      <input name="phone" type="number" placeholder="Phone">
+      <input name="age" type="number" placeholder="Age">
+      <button type="submit">Save</button>
+    </form>
+  </div>
+  <ul id="info">
+  </ul>
+  <script src="index.js"></script>
+</body>
+</html>
