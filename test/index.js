@@ -102,7 +102,7 @@
 
             break;
           case isDeleteBtn:
-            const confirm = window.confirm(`Ви дійсно хочете видалити ${user.name} ?`);
+            const confirm = window.confirm(`Ви дійсно хочете видалити користувача ${user.name} ?`);
             if (!confirm) {
               break;
             }
@@ -112,7 +112,6 @@
 
             break;
         }
-
       });
 
       const div = tr.querySelector('div');
