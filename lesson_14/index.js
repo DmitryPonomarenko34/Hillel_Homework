@@ -16,7 +16,6 @@ for (let index = 0; index < slides.length; index++) {
   dots.appendChild(btn);
 }
 
-
 const disableControlBtn = () => {
   const isFirstSlideActive = slides[0].classList.contains(ACTIVE);
   const isLastSlideActive = slides[slides.length - 1].classList.contains(ACTIVE);
@@ -26,7 +25,6 @@ const disableControlBtn = () => {
 }
 
 disableControlBtn();
-
 
 nextBtn.addEventListener('click', () => {
   const currentSlide = slider.querySelector(`.${ACTIVE}`);
