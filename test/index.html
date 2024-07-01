@@ -7,32 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <table id="table">
-    <tr>
-      <th>id</th>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Age</th>
-      <th>Action</th>
-    </tr>
-  </table>
-  <button id="createBtn">Add user</button>
-  <div id="modal">
-    <form id="create" action="#">
-      <input name="name" type="text" placeholder="Name">
-      <input name="phone" type="number" placeholder="Phone">
-      <input name="age" type="number" placeholder="Age">
-      <button type="submit">Save</button>
-    </form>
-    <form id="edit" action="#">
-      <input name="name" type="text" placeholder="Name">
-      <input name="phone" type="number" placeholder="Phone">
-      <input name="age" type="number" placeholder="Age">
-      <button type="submit">Save</button>
-    </form>
-  </div>
-  <ul id="info">
-  </ul>
+  <form id="form" action="#">
+    <input name="name" type="text" data-type="required" placeholder="Name">
+    <textarea name="message" data-type="minLength" placeholder="Повідомлення"></textarea>
+    <h4>Як вам відповісти ?</h4>
+    <input name="phone" type="tel" data-type="required" placeholder="Номер телефону">
+    <input name="email" type="email" data-type="email" placeholder="Емейл">
+    <input name="adress" type="text" data-type="required" placeholder="Адреса">
+    <button type="submit">Send</button>
+  </form>
   <script src="index.js"></script>
 </body>
 </html>

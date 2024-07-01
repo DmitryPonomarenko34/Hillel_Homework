@@ -3,28 +3,30 @@
 }
 
 form {
-  display: none;
-  position: absolute;
-  padding: 15px;
-  width: 500px;
-  height: auto;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #c0c0c0;
+  display: block;
+  max-width: 500px;
+
+  input, textarea {
+    margin-bottom: 20px;
+    border: 2px solid #000;
+    height: 40px;
+  }
+
+  .error-field {
+    border-color: red;
+  }
+
+  .valid-field {
+    border-color: green;
+  }
 
   * {
     display: block;
     width: 100%;
   }
 
-  input {
-    margin-bottom: 20px;
-    border: 1px solid #000;
-    height: 40px;
+  p {
+    color: red;
   }
-
-  &.active {
-    display: block;
-  }
+  
 }
