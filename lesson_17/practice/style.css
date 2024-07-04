@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box; 
+}
+
+form {
+  display: block;
+  max-width: 500px;
+
+  input, textarea {
+    margin-bottom: 20px;
+    border: 2px solid #000;
+    height: 40px;
+  }
+
+  .error-field {
+    border-color: red;
+  }
+
+  .valid-field {
+    border-color: green;
+  }
+
+  * {
+    display: block;
+    width: 100%;
+  }
+
+  p {
+    color: red;
+  }
+  
+}
