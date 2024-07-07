@@ -7,15 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <form id="form" action="#">
-    <input name="name" type="text" data-type="required" placeholder="Name">
-    <textarea name="message" data-type="minLength" placeholder="Повідомлення"></textarea>
-    <h4>Як вам відповісти ?</h4>
-    <input name="phone" type="tel" data-type="required" placeholder="Номер телефону">
-    <input name="email" type="email" data-type="email" placeholder="Емейл">
-    <input name="adress" type="text" data-type="required" placeholder="Адреса">
+  <form id="form">
+    <div>https://swapi.dev/api/</div>
+    <input name="path" type="text" placeholder="people/1/">
     <button type="submit">Send</button>
   </form>
+  <pre id="info">
+
+  </pre>
   <script src="index.js"></script>
 </body>
 </html>
