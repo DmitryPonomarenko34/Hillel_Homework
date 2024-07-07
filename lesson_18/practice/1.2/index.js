@@ -3,52 +3,47 @@ function Clock(boxId) {
   let hours = new Date().getHours();
   let minutes = new Date().getMinutes();
   let seconds = new Date().getSeconds();
+  let timerId;
 
-  box.innerHTML = `
-    <div id="timer">
-      ${hours}:${minutes}:${seconds}
-    </div>
-    <button>
-      Start
-    </button>
-    <button id="stop">
-      Stop
-    </button>
-  `;
+  box.textContent = `${hours}:${minutes}:${seconds}`;
 
-  const startTimer = () => {
-    const timer = box.querySelector('#timer');
-    seconds++;
+  this.start = function () {
+    const startTimer = () => {
+      seconds++;
 
-    if (seconds === 60) {
-      seconds = 0;
-      minutes ++;
+      if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+      }
+
+      if (minutes === 60) {
+        minutes = 0;
+        hours++;
+      }
+
+      if (hours === 25) {
+        hours = 1;
+      }
+
+      box.textContent = `${hours}:${minutes}:${seconds}`;
     }
 
-    if (minutes === 60) {
-      minutes = 0;
-      hours ++;
-    }
-
-    if (hours === 25) {
-      hours = 1;
-    }
-
-    timer.textContent = `${hours}:${minutes}:${seconds}`;  
+    timerId = setInterval(startTimer, 1000);
   }
 
-  const timerId = setInterval(startTimer, 1000);
-
   this.stop = function() {
-    const stopBtn = box.querySelector('#stop');
-
-    stopBtn.addEventListener('click', () => {
-      clearInterval(timerId);
-    })
+    clearInterval(timerId);
   }
 }
 
-const clock = new Clock('clock');
+const clock = new Clock('clockBox');
+const startBtn = document.querySelector('#start');
+const stopBtn = document.querySelector('#stop');
 
-clock.stop();
+startBtn.addEventListener('click', () => {
+  clock.start();
+})
 
+stopBtn.addEventListener('click', () => {
+  clock.stop();
+})
