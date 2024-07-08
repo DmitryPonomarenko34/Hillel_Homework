@@ -2,7 +2,7 @@
 
 class BankAccount {
   #balance
-  constructor(balance) {
+  constructor(balance = 0) {
     this.#balance = balance;
   }
 
