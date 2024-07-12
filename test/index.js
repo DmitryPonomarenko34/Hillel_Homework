@@ -1,37 +1,16 @@
-function loadData() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const data = 'Дані завантажено';
-      resolve(data);
-      // або
-      // reject('Помилка завантаження');
-    }, 1000);
-  });
-}
-
-function processData(data) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const processedData = `${data} і оброблено`;
-      resolve(processedData);
-    }, 1000);
-  });
-}
-
-function updateUI(processedData) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(processedData);
-      resolve();
+import {path} from 'webpack';
 
 
-    }, 1000);
-  });
-}
-
-// Виклик функцій
-loadData()
-  .then(processData)
-  .then(updateUI)
-  .catch((error) => console.error(`Помилка: ${error}`))
-  .finally(() => console.log('Операції завершено'));
+module.exports = {
+  entry: './test/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'my-first-webpack.bundle.js',
+  },
+  module: {
+    rules: [
+      { test: /\.(?:js|mjs|cjs)$/, use: 'babel-loader' },
+      { test: /\.scss$/, use: 'sass-loader' },
+    ],
+  },
+};
