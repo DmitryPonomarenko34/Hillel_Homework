@@ -1,0 +1,15 @@
+#slider {
+  div {
+    display: none;
+    width: 500px;
+    height: 250px;
+    background-color: gray;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .active {
+    display: flex;
+  } 
+}

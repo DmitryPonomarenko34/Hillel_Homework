@@ -1,21 +1,15 @@
-const list = document.querySelector('#list');
-const avatarImg = document.querySelector('#avatar');
 
-(async function () {
-  const response = await fetch('https://api.github.com/users/DmitryPonomarenko34');
-  const data = await response.json();
+$(function() {
+  $('#slider div:first-child').addClass('active');
 
-  avatarImg.setAttribute('src', data.avatar_url);
-})();
+  setInterval(() => {
+      if (!$('#slider div.active').next().hasClass('slide')) {
+        $('#slider div.active').removeClass('active').next('.slide').addClass('active');
+        $('#slider div:first-child').addClass('active');
 
-(async function () {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-  const data = await response.json();
+        return;
+      }
 
-  for (const iterator of data) {
-    const li = document.createElement('li');
-
-    li.textContent = iterator.title;
-    list.appendChild(li);
-  }
-})();
+      $('#slider div.active').removeClass('active').next('.slide').addClass('active');
+  }, 5000);
+});
