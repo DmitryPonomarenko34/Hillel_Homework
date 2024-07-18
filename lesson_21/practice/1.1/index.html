@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    pre {
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+  </style>
+
+</head>
+<body>
+  <form id="form" style="display: flex; align-items: center;">
+    <input name="endpoint" type="text" placeholder="people/1/">
+    <button type="submit">
+      Get Info
+    </button>
+  </form>
+  <div>
+    <span id="controller"></span>
+    <span id="id"></span>
+  </div>
+  <pre id="info">
+
+  </pre>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
