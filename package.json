@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "@babel/core": "^7.24.7",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^9.1.3",
@@ -12,7 +13,7 @@
     "webpack": "^5.92.1"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "babel src -d lib"
   },
   "dependencies": {
     "cors": "^2.8.5",
