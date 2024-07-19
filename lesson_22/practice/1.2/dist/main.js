@@ -1,0 +1,1 @@
+(()=>{"use strict";var o;o="".concat("hello"," user"),console.log(o)})();
