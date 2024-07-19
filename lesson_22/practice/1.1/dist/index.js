@@ -1,0 +1,1 @@
+"use strict";var hello="hello",greetings="".concat("hello"," user");(function(){console.log(greetings)})();
