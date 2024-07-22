@@ -1,4 +1,4 @@
-import { renderTodoList, addTodo, updateTodo } from "./utils.js";
+import { renderTodoList, addTodo, updateTodo, removeTodo } from "./utils.js";
 
 export async function getTodoListAsync() {
   try {
@@ -44,6 +44,20 @@ export async function updateTodoAsync(id, body) {
 
     const data = await response.json();
     updateTodo(data);
+  } catch(err) {
+      console.log(err);
+  }
+};
+
+export async function removeTodoAsync(id) {
+  try {
+   const response = await fetch(`http://localhost:5000/todos/${id}`, { 
+      method: "DELETE",  
+    });
+
+    const data = await response.json();
+    removeTodo(data);
+
   } catch(err) {
       console.log(err);
   }

@@ -56,7 +56,7 @@ app.put('/todos/:id', (request, res) => {
 });
 
 app.delete('/todos/:id', (request, res) => {
-  TodoModel.deleteOne(request.params.id).then(response => res.send(response));
+  TodoModel.findByIdAndDelete(request.params.id).then(response => res.send(response));
 });
 
 module.exports = TodoModel;
