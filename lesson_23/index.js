@@ -46,4 +46,17 @@ app.get('/todos/:id', (request, res) => {
   TodoModel.findById(request.params.id).then(response => res.send(response));
 });
 
+app.put('/todos/:id', (request, res) => {
+  const id = request.params.id;
+  const todo = request.body;
+
+  TodoModel.updateOne({_id: id}, todo)
+    .then(() => TodoModel.findById(id))
+    .then((response) => res.send(response));
+});
+
+app.delete('/todos/:id', (request, res) => {
+  TodoModel.deleteOne(request.params.id).then(response => res.send(response));
+});
+
 module.exports = TodoModel;

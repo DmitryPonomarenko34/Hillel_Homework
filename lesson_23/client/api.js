@@ -1,6 +1,6 @@
-import { renderTodoList, addTodo } from "./utils.js";
+import { renderTodoList, addTodo, updateTodo } from "./utils.js";
 
-export async function getTodoList() {
+export async function getTodoListAsync() {
   try {
     const response = await fetch('http://localhost:5000/todos');
 
@@ -15,7 +15,7 @@ export async function getTodoList() {
   }
 };
 
-export async function createTodo({ value }) {
+export async function createTodoAsync({ value }) {
   try {
    const response = await fetch('http://localhost:5000/todos', { 
       method: "POST",  
@@ -27,6 +27,23 @@ export async function createTodo({ value }) {
 
     const data = await response.json();
     addTodo(data);
+  } catch(err) {
+      console.log(err);
+  }
+};
+
+export async function updateTodoAsync(id, body) {
+  try {
+   const response = await fetch(`http://localhost:5000/todos/${id}`, { 
+      method: "PUT",  
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+    updateTodo(data);
   } catch(err) {
       console.log(err);
   }
