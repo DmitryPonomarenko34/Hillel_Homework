@@ -1,31 +1,14 @@
-(async function () {
-  try {
-    const response = await fetch('http://localhost:5000/users', { 
-      method: "POST",  
-      headers: {
-        "Content-Type": "application/json",
-      }, 
-      body: JSON.stringify({user: 'Test', status: 'user'})
-    });
-      
-      const data = await response.json();
-      console.log('data', data);
-    } catch(err) {
-      console.log(err);
-    }
-})();
+import { createTodo, getTodoList } from "./api.js";
+const form = document.querySelector('.js--form');
 
-(async function () {
-  try {
-    const response = await fetch('http://localhost:5000/users/7');
+getTodoList();
 
-    if (response.status === 404) {
-      throw new Error('User not found');
-    }
-    
-    const data = await response.json();
-    console.log('data', data);
-  } catch(err) {
-      console.log(err);
-  }
-})()
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  createTodo(data);
+
+  form.reset();
+})

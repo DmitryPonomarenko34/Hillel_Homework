@@ -7,7 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="btn">111</button>
-  <script src="index.js"></script>
+  <div class="container">
+    <h1>ToDoList</h1>
+    <form class="form js--form">
+        <input type="text" name="value" required class="form__input js--form__input">
+        <button type="submit" class="form__btn">Додати</button>
+    </form>
+    <ul class="js--todos-wrapper">
+    </ul>
+  </div>
+  <script type="module" src="index.js"></script>
 </body>
 </html>
