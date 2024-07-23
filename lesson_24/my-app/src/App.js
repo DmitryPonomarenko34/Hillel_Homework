@@ -29,6 +29,7 @@ const obj = {
   "edited": "2014-12-20T21:17:56.891000Z",
   "url": "https://swapi.dev/api/people/1/"
 };
+
 const stringifiedObj = JSON.stringify(obj, null, 2)
 
 function App() {
