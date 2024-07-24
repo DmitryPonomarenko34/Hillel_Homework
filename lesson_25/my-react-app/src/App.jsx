@@ -1,8 +1,10 @@
-import { Component } from 'react'
+import { Component } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import { getTodoListAsync, createTodoAsync } from './api/api';
+import { getTodoListAsync, createTodoAsync, removeTodoAsync } from './api/api';
+import { Context } from './context';
 import './App.css'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,15 +27,22 @@ class App extends Component {
     this.setState({text: event.target.value});
   }
 
+  removeTodo = (id) => {
+    removeTodoAsync(id, this.setState.bind(this));
+  }
+
   render() {
     const { todoItems } = this.state;
+    const { removeTodo } = this;
 
     return (
       <>
         <div className='container'>
           <h1>ToDoList</h1>
           <TodoForm value={this.state.text} onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)} />
-          <TodoList items={todoItems} />
+          <Context.Provider value={ { removeTodo } } >
+            <TodoList items={todoItems} />
+          </Context.Provider>
         </div>
       </>
     )

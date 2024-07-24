@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
+import { Context } from '../context';
 
-class TodoItem extends Component {
+class TodoItem extends Component {  
+  static contextType = Context;
+
   render() {
-    const { todo, onClick } = this.props;
+    const { todo } = this.props;
 
     return (
       <>
@@ -11,7 +14,7 @@ class TodoItem extends Component {
         <span className="todo-item__description">
           {todo.text}
         </span>
-        <button onClick={ () => onClick(todo._id)} className="todo-item__delete">
+        <button onClick={ () => this.context.removeTodo(todo._id)} className="todo-item__delete">
           Видалити
         </button>
       </>

@@ -49,16 +49,16 @@ export async function createTodoAsync(value, setTodos) {
 //   }
 // }
 
-// export async function removeTodoAsync(id) {
-//   try {
-//    const response = await fetch(`http://localhost:5000/todos/${id}`, { 
-//       method: "DELETE",  
-//     });
+export async function removeTodoAsync(id, setTodos) {
+  try {
+   const response = await fetch(`http://localhost:5000/todos/${id}`, { 
+      method: "DELETE",  
+    });
 
-//     const data = await response.json();
-//     removeTodo(data);
+    const data = await response.json();
+    setTodos(prevState => ({todoItems: prevState.todoItems.filter(item => item._id !== data._id)}));
 
-//   } catch(err) {
-//       console.log(err);
-//   }
-// }
+  } catch(err) {
+      console.log(err);
+  }
+}
