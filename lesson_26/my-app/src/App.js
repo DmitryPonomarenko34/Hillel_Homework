@@ -1,34 +1,20 @@
-import { useState } from 'react';
 import './App.css';
-import { TodoItem } from './components/TodoItem';
+import { Item } from './components/Item';
+
+const array = [...new Array(9)];
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [text, setText] = useState('');
+  const handleClick = (event) => {
+    const index = event.target.getAttribute('key');
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+    array[index] = 'x';
+  };
 
-    setText('');
-    setTodos((prevState) => [...prevState, {checked: false, text}]);
-  }
-
-  const handleChangeText = (event) => {
-    setText(event.target.value);
-  }
+  console.log(array);
 
   return (
-    <div className="container">
-      <h1>ToDoList</h1>
-      <form form className="form js--form" onSubmit={onSubmit}>
-        <input type="text" name="value" required className="form__input js--form__input" onChange={handleChangeText} />
-        <button type="submit" className="form__btn">Додати</button>
-      </form>
-      <ul className="js--todos-wrapper">
-        {todos.map((todo) => (
-          <TodoItem text={todo.text} checked={todo.checked}/>
-        ))}
-      </ul>
+    <div className="container" onClick={handleClick}>
+      {array.map((val, index) => <Item key={index} val={val}/>)}
     </div>
   );
 }
