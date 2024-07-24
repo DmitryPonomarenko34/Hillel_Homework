@@ -14,22 +14,23 @@ export async function getTodoListAsync(setTodos) {
   }
 }
 
-// export async function createTodoAsync({ value }) {
-//   try {
-//    const response = await fetch('http://localhost:5000/todos', { 
-//       method: "POST",  
-//       headers: {
-//         "Content-Type": "application/json",
-//       }, 
-//       body: JSON.stringify({text: value})
-//     });
+export async function createTodoAsync(value, setTodos) {
+  try {
+   const response = await fetch('http://localhost:5000/todos', { 
+      method: "POST",  
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify({text: value})
+    });
 
-//     const data = await response.json();
-//     addTodo(data);
-//   } catch(err) {
-//       console.log(err);
-//   }
-// }
+    const data = await response.json();
+    setTodos(prevState => ({todoItems: [...prevState.todoItems, data]}));
+
+  } catch(err) {
+      console.log(err);
+  }
+}
 
 // export async function updateTodoAsync(id, body) {
 //   try {
