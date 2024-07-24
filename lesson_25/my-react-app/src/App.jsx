@@ -1,44 +1,27 @@
 import { Component } from 'react'
-import './App.css'
 import TodoForm from './components/TodoForm';
-import TodoItem from './components/TodoItem';
-// import TodoForm from './TodoForm';
-
+import TodoList from './components/TodoList';
+import { getTodoListAsync } from './api/api';
+import './App.css'
 class App extends Component {
   constructor(props) {
     super(props);
     
-    this.state = { timer: new Date().toLocaleTimeString(), isVisible: true, todoItems: [] };
-  }
-
-  updateTimer() {
-    this.setState({timer: new Date().toLocaleTimeString() });
+    this.state = { todoItems: [] };
   }
 
   componentDidMount() {
-    this.timerId = setInterval(() => {
-      this.updateTimer();
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerId);
+    getTodoListAsync(this.setState.bind(this))
   }
 
   render() {
-    const { timer, isVisible, todoItems } = this.state;
+    const { todoItems } = this.state;
     return (
       <>
-        {isVisible && timer}
-        <button onClick={this.updateTimer.bind(this)}>Оновити</button>
-        <button onClick={() => this.setState({ isVisible: !isVisible })}>Приховати / Показати</button>
-
-        <div>
+        <div className='container'>
           <h1>ToDoList</h1>
           <TodoForm />
-          <ul className="js--todos-wrapper">
-            {todoItems.map((todo) => <TodoItem key={todo._id} todo={todo} />)}
-          </ul>
+          <TodoList items={todoItems} />
         </div>
       </>
     )

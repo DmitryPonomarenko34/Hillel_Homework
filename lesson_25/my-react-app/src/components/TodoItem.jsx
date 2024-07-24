@@ -7,7 +7,7 @@ class TodoItem extends Component {
 
     return (
       <>
-        <input type="checkbox" checked={todo.checked} />
+        <input type="checkbox" defaultChecked={todo.checked}/>
         <span className="todo-item__description">
           {todo.text}
         </span>
