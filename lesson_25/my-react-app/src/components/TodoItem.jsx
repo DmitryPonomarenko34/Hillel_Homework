@@ -10,7 +10,10 @@ class TodoItem extends Component {
 
     return (
       <>
-        <input type="checkbox" defaultChecked={todo.checked}/>
+        <input type="checkbox" defaultChecked={todo.checked} onChange={(event) => this.context.updateTodo(
+          todo._id,
+          {...todo, checked: event.target.checked }
+          )}/>
         <span className="todo-item__description">
           {todo.text}
         </span>

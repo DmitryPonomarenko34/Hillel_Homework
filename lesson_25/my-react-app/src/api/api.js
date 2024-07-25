@@ -32,22 +32,29 @@ export async function createTodoAsync(value, setTodos) {
   }
 }
 
-// export async function updateTodoAsync(id, body) {
-//   try {
-//    const response = await fetch(`http://localhost:5000/todos/${id}`, { 
-//       method: "PUT",  
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(body)
-//     });
+export async function updateTodoAsync(id, body, setTodos) {
+  try {
+   const response = await fetch(`http://localhost:5000/todos/${id}`, { 
+      method: "PUT",  
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body)
+    });
 
-//     const data = await response.json();
-//     updateTodo(data);
-//   } catch(err) {
-//       console.log(err);
-//   }
-// }
+    const data = await response.json();
+    setTodos(prevState => ({todoItems: prevState.todoItems.map(item => {
+      if (item._id === data._id) {
+        return data;
+      }
+
+      return item;
+    })}));
+
+  } catch(err) {
+      console.log(err);
+  }
+}
 
 export async function removeTodoAsync(id, setTodos) {
   try {
