@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.emoji {
+	font-size: 100px;
+	background-color: transparent;
+	padding: 0;
+	margin-bottom: 20px;
+	border: none;
+}
+
+.btns {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+
+.btn {
+	padding: 15px;
+	background-color: green;
+	border: none;
+	border-radius: 15px;
+	color: #fff;
+	cursor: pointer;
+}
