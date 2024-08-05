@@ -1,36 +1,24 @@
-import { useState, Component } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-// import TodoForm from './TodoForm';
+/* eslint-disable react/prop-types */
+import { TextField, Button } from '@mui/material'
+import { useState } from 'react';
+import { Form, Field } from 'react-final-form'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = { timer: new Date().toString(), isVisible: true };
-  }
+const useFormField = () => {
+  const [value, setValue] = useState();
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
 
-  updateTimer() {
-    this.setState({timer: new Date().toString() });
-  }
+  return {value, onChange}
+};
 
-  componentDidMount() {
-    setInterval(() => {
-      this.updateTimer();
-    }, 1000);
-  }
+export default function App() {
+  const onSubmit = (data) => console.log(data);
 
-  render() {
-    const { timer, isVisible } = this.state;
-    return (
-      <>
-        {isVisible && timer}
-        <button onClick={this.updateTimer.bind(this)}>Update</button>
-        <button onClick={() => this.setState({ isVisible: !isVisible })}>Приховати / Показати</button>
-      </>
-    )
-  }
+  return (
+    <form>
+      <input type="text" />
+      <button>Submit</button>
+    </form>
+  )
 }
-
-export default App;
