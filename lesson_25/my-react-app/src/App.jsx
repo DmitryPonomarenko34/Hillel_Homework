@@ -3,9 +3,10 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { getTodoListAsync, createTodoAsync, removeTodoAsync, updateTodoAsync } from './api/api';
 import { Context } from './context';
-import './App.css'
 import SmileysList from './components/SmileysList';
 import SmileysItem from './components/SmileysItem';
+import Timer from './components/Timer';
+import './App.css'
 
 const inithialState = [
   {dec: '128512', count: 0}, 
@@ -23,7 +24,9 @@ class App extends Component {
       todoItems: [], 
       text: '', 
       smileys: [...inithialState],
-      smile: null
+      smile: null,
+      timer: new Date().toLocaleTimeString(), 
+      isVisible: true,
     };
   }
 
@@ -76,13 +79,22 @@ class App extends Component {
     localStorage.clear();
   }
 
+  updateTimer = () => {
+    this.setState({timer: new Date().toLocaleTimeString() });
+  }
+
+  toggleVisible = () => {
+    this.setState(prevState => ({isVisible: !prevState.isVisible}));
+  }
+
   render() {
-    const { todoItems, smileys, smile } = this.state;
-    const { removeTodo, updateTodo, incrementCount, showWinner, clear } = this;
-    
+    const { todoItems, smileys, smile, timer, isVisible } = this.state;
+    const { removeTodo, updateTodo, incrementCount, showWinner, clear, updateTimer, toggleVisible } = this;
+
     return (
       <>
         <div className='container'>
+          <Timer timer = {timer} isVisible={isVisible} updateTimer= {updateTimer} toggleVisible={toggleVisible} />
           <h1>ToDoList</h1>
           <TodoForm value={this.state.text} onSubmit={this.onSubmit.bind(this)} onChange={this.onChange.bind(this)} />
           <Context.Provider value={ { removeTodo, updateTodo, incrementCount } } >
