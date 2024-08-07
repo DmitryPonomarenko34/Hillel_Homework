@@ -24,6 +24,7 @@ export default function App() {
       </button>
       <TodoForm onSubmit={onSubmit} />
       <TodoList items={todos} />
+      Всього: {todos?.length}
     </>
   );
 }
