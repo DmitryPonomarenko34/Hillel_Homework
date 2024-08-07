@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
@@ -11,4 +11,20 @@ const counterReducer = (state = 0, action) => {
   }
 };
 
-export const store = createStore(counterReducer);
+const todoReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      console.log(action.payload);
+      
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+};
+
+const allReducers = combineReducers({
+    counter: counterReducer,
+    todos: todoReducer
+})
+
+export const store = createStore(allReducers);
