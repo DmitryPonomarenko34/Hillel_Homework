@@ -14,7 +14,7 @@ export async function getTodoListAsync() {
   }
 }
 
-export async function createTodoAsync(value, setTodos) {
+export async function createTodoAsync(value) {
   try {
     const response = await fetch("http://localhost:5000/todos", {
       method: "POST",
@@ -25,7 +25,8 @@ export async function createTodoAsync(value, setTodos) {
     });
 
     const data = await response.json();
-    setTodos((prevState) => ({ todoItems: [...prevState.todoItems, data] }));
+
+    return data;
   } catch (err) {
     console.log(err);
   }
