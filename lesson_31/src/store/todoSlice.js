@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { FETCH_TODOS_REQUEST } from "./saga/watchers";
 
 const initialState = {
   items: [],
@@ -9,12 +11,25 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      return (state.todos = action.payload);
+      return (state.items = action.payload);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
+export const useTodo = () => {
+  const todo = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
+
+  const fetchTodos = () => {
+    dispatch({ type: FETCH_TODOS_REQUEST });
+  };
+
+  return {
+    todo,
+    fetchTodos,
+  };
+};
+
 export const { add } = todoSlice.actions;
 
 export default todoSlice.reducer;

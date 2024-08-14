@@ -1,7 +1,17 @@
-import { useTodo } from "./store";
+import { useEffect } from "react";
+import { useTodo } from "./store/todoSlice";
+import TodoList from "./components/TodoList";
 
 export default function App() {
-  const { items } = useTodo();
+  const { todo, fetchTodos } = useTodo();
 
-  return <>{items}</>;
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  return (
+    <>
+      <TodoList items={todo.items} />
+    </>
+  );
 }
