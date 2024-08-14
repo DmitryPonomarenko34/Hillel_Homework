@@ -11,7 +11,7 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      return (state.items = action.payload);
+      state.items = action.payload;
     },
   },
 });
