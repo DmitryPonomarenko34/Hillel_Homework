@@ -32,7 +32,7 @@ export async function createTodoAsync(value) {
   }
 }
 
-export async function updateTodoAsync(id, body, setTodos) {
+export async function updateTodoAsync({ id, body }) {
   try {
     const response = await fetch(`http://localhost:5000/todos/${id}`, {
       method: "PUT",
@@ -43,30 +43,22 @@ export async function updateTodoAsync(id, body, setTodos) {
     });
 
     const data = await response.json();
-    setTodos((prevState) => ({
-      todoItems: prevState.todoItems.map((item) => {
-        if (item._id === data._id) {
-          return data;
-        }
 
-        return item;
-      }),
-    }));
+    return data;
   } catch (err) {
     console.log(err);
   }
 }
 
-export async function removeTodoAsync(id, setTodos) {
+export async function removeTodoAsync(id) {
   try {
     const response = await fetch(`http://localhost:5000/todos/${id}`, {
       method: "DELETE",
     });
 
     const data = await response.json();
-    setTodos((prevState) => ({
-      todoItems: prevState.todoItems.filter((item) => item._id !== data._id),
-    }));
+
+    return data;
   } catch (err) {
     console.log(err);
   }
