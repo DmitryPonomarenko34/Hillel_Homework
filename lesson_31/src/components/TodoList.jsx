@@ -5,7 +5,7 @@ function TodoList({ items }) {
   return (
     <ul className="js--todos-wrapper">
       {items?.map((todo, index) => (
-        <li key={index}>
+        <li className="todo-item" key={index}>
           <TodoItem todo={todo} />
         </li>
       ))}
