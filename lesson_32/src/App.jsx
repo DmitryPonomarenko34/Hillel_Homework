@@ -9,7 +9,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { AddIcon, DeleteIcon } from "@mui/icons-material";
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
