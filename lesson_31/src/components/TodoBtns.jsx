@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function TodoBtns({
+export default function TodoBtns({
   isEditMode,
   removeTodo,
   toggleEditMode,
@@ -28,6 +28,4 @@ function TodoBtns({
       </button>
     </>
   );
-}
-
-export default TodoBtns;
+};

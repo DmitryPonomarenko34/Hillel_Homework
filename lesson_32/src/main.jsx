@@ -2,8 +2,10 @@ import React from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import AppPage from './pages/App';
 import AppLayout from './layouts/AppLayout';
+import TodoListPage from './pages/TodoList';
+import SwapiPage from './pages/Swapi';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -13,7 +15,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <App />
+        element: <AppPage />
+      },
+      {
+        path: '/todo',
+        element: <TodoListPage />
+      },
+      {
+        path: '/todo',
+        element: <SwapiPage />
       }
     ]
   }
