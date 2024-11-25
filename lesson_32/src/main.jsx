@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <TodoListPage />
       },
       {
-        path: '/todo',
+        path: '/swapi',
         element: <SwapiPage />
       }
     ]

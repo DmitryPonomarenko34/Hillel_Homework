@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Flex, Layout, Menu } from 'antd';
+import { Flex, Layout, Menu, Typography } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 
@@ -93,7 +93,13 @@ export default function AppLayout() {
             </div>
           </div>
         </Content>
-        <Footer style={footerStyle}>Copyright © 2024</Footer>
+        <Footer style={footerStyle}>
+          <Flex gap={20}>
+            <a href="https://github.com/DmitryPonomarenko34?tab=repositories">Github</a>
+            <a href="mailto:dimaponomarenko443@gmail.com">dimaponomarenko443@gmail.com</a>
+            <Typography style={{ marginLeft: 'auto' }}>Copyright @ 2024</Typography>
+          </Flex>
+        </Footer>
       </Flex>
     </Layout>
   );
