@@ -18,6 +18,7 @@ export default [
       }
     },
     settings: { react: { version: '18.3' } },
+    extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
     plugins: {
       react,
       'react-hooks': reactHooks,
