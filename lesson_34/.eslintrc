@@ -1,0 +1,10 @@
+{
+  "extends": ["airbnb"],
+  "globals": {
+    "window": false,
+    "document": false
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+}
