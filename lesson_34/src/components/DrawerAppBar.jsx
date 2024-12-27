@@ -16,7 +16,10 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About'];
+const navItems = [
+  { title: 'Home', to: '/' },
+  { title: 'About', to: '/about' }
+];
 
 const DrawerAppBar = (props) => {
   const { window } = props;
@@ -28,7 +31,11 @@ const DrawerAppBar = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography
+        variant="h6"
+        sx={{
+          my: 2
+        }}>
         Booking
       </Typography>
       <Divider />
@@ -36,7 +43,7 @@ const DrawerAppBar = (props) => {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -48,8 +55,7 @@ const DrawerAppBar = (props) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav" color="default">
+      <AppBar component="nav" color="default" position="static">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -62,17 +68,31 @@ const DrawerAppBar = (props) => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, color: 'orange', display: { xs: 'none', sm: 'block' } }}>
+            sx={{
+              flexGrow: 1,
+              color: 'orange',
+              display: { xs: 'none', sm: 'flex' },
+              alignItems: 'center',
+              gap: '5px',
+              ':before': {
+                content: '""',
+                display: 'block',
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                backgroundColor: 'orange'
+              }
+            }}>
             Booking
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: '10px' }}>
             {navItems.map((item) => (
               <Button
                 component={Link}
-                to={`/${item}`}
-                key={item}
+                to={item.to}
+                key={item.title}
                 sx={{ color: '#fff', backgroundColor: 'orange' }}>
-                {item}
+                {item.title}
               </Button>
             ))}
           </Box>

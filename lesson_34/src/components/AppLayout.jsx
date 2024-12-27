@@ -1,12 +1,16 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import DrawerAppBar from './DrawerAppBar';
 
 const AppLayout = () => {
   return (
     <Box>
-      <DrawerAppBar />
-      <Outlet />
+      <Box sx={{ marginBottom: '20px' }}>
+        <DrawerAppBar />
+      </Box>
+      <Container maxWidth="md">
+        <Outlet />
+      </Container>
     </Box>
   );
 };
