@@ -1,6 +1,6 @@
 import { Form } from 'react-final-form';
 import SelectLabels from '../components/SelectLabels';
-import BasicDatePicker from '../components/BasicDatePicker';
+import BasicDateRangePicker from '../components/BasicDateRangePicker';
 
 const HomePage = () => {
   return (
@@ -9,8 +9,8 @@ const HomePage = () => {
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <SelectLabels name="destination" label={'Destination'} items={[]} />
-          <BasicDatePicker name={'checkin'} label={'Checkin'} />
-          <BasicDatePicker name={'checkout'} label={'Checkout'} />
+          <BasicDateRangePicker />
+          <BasicDateRangePicker />
           <button type="submit">Submit</button>
         </form>
       )}
