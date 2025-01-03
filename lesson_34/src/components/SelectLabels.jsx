@@ -13,7 +13,7 @@ const SelectLabels = ({ label, items, name }) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 210 }}>
+      <FormControl sx={{ m: 1, minWidth: 190, margin: 0 }} fullWidth>
         <InputLabel id="demo-simple-select-helper-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"

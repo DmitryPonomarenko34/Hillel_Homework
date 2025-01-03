@@ -8,7 +8,7 @@ const AppLayout = () => {
       <Box sx={{ marginBottom: '20px' }}>
         <DrawerAppBar />
       </Box>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Outlet />
       </Container>
     </Box>

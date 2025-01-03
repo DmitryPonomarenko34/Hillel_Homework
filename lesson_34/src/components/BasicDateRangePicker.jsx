@@ -8,12 +8,14 @@ import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 const minDate = dayjs().startOf('day');
 const maxDate = dayjs().add(1, 'year').endOf('year');
 
-const BasicDateRangePicker = () => {
+const BasicDateRangePicker = ({ name }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DateRangePicker']}>
+      <DemoContainer components={['DateRangePicker']} sx={{ translate: '0px -4px' }}>
         <DateRangePicker
-          name="range"
+          format="DD-MM-YY"
+          sx={{ '.MuiMultiInputDateRangeField-separator': { display: 'none' } }}
+          name={name}
           localeText={{ start: 'Check-in', end: 'Check-out' }}
           minDate={minDate}
           maxDate={maxDate}
