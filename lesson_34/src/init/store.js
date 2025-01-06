@@ -4,6 +4,7 @@ import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga/rootSaga';
+import bookingReducer from './slices/bookingSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,7 +14,8 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
 
 export const store = configureStore({
   reducer: combineReducers({
-    router: routerReducer
+    router: routerReducer,
+    booking: bookingReducer
   }),
   middleware: () => [sagaMiddleware, routerMiddleware]
 });

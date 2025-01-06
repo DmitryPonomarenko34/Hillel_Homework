@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDestinitionAsync } from '../init/saga/asyncActions';
 import { TextField, Grid2, Button, Box, Typography } from '@mui/material';
 import SelectLabels from '../components/SelectLabels';
 import BasicDateRangePicker from '../components/BasicDateRangePicker';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const { destinations, loading } = useSelector((state) => state.booking);
+
+  useEffect(() => {
+    dispatch(getDestinitionAsync());
+  }, []);
+
   return (
     <Box>
       <Box marginBottom={1}>
@@ -13,7 +23,12 @@ const HomePage = () => {
             <form onSubmit={handleSubmit}>
               <Grid2 container spacing={2} alignItems="center">
                 <Grid2 size={{ xs: 12, sm: 6, md: 3 }}>
-                  <SelectLabels name="destination" label={'Destination'} items={[]} />
+                  <SelectLabels
+                    name="destination"
+                    isLoading={loading}
+                    label={'Destination'}
+                    items={destinations}
+                  />
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 6, md: 6 }}>
                   <BasicDateRangePicker name={'dateRange'} />
