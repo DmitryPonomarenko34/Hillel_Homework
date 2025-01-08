@@ -1,18 +1,11 @@
-import { useEffect } from 'react';
 import { Form } from 'react-final-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { getDestinitionAsync } from '../init/saga/asyncActions';
+import { useSelector } from 'react-redux';
 import { TextField, Grid2, Button, Box, Typography } from '@mui/material';
 import SelectLabels from '../components/SelectLabels';
 import BasicDateRangePicker from '../components/BasicDateRangePicker';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const { destinations, loading } = useSelector((state) => state.booking);
-
-  useEffect(() => {
-    dispatch(getDestinitionAsync());
-  }, []);
 
   return (
     <Box>
