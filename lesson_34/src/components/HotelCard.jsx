@@ -18,7 +18,7 @@ export default function HotelCard({ name, address, city, state, country_code }) 
           {name}
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          adress: {address}
+          address: {address}
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           west: {state}
