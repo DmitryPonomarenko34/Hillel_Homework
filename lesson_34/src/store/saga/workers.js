@@ -1,6 +1,13 @@
 import api from '../../api';
 import { put, call } from 'redux-saga/effects';
-import { setDestinations, setLoading, setError } from '../slices/bookingSlice';
+import {
+  setDestinations,
+  setLoading,
+  setError,
+  setHotels,
+  setHotelsLoading
+} from '../slices/bookingSlice';
+import { push } from 'redux-first-history';
 
 function* callGetDestinitionWorker() {
   try {
@@ -14,11 +21,17 @@ function* callGetDestinitionWorker() {
   }
 }
 
-function* callAddBookingWorker(action) {
+function* callSubmitFormAndGetHotelsWorker(action) {
   try {
-  } catch (e) {
-    console.warn(e);
+    setHotelsLoading(true);
+    const response = yield call(api.get, '/hotels');
+    yield put(setHotels(response.data));
+    yield put(push('/hotels'));
+  } catch (error) {
+    yield put(setError(error.response?.data?.message || 'Failed to fetch destinations'));
+  } finally {
+    yield put(setHotelsLoading(false));
   }
 }
 
-export { callGetDestinitionWorker, callAddBookingWorker };
+export { callGetDestinitionWorker, callSubmitFormAndGetHotelsWorker };

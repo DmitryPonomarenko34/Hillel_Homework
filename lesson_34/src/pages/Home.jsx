@@ -1,17 +1,24 @@
 import { Form } from 'react-final-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Grid2, Button, Box, Typography } from '@mui/material';
 import SelectLabels from '../components/SelectLabels';
 import BasicDateRangePicker from '../components/BasicDateRangePicker';
+import { submitFormAndGetHotelsAsync } from '../store/saga/asyncActions';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const { destinations, loading } = useSelector((state) => state.booking);
+
+  const getHotels = (data) => {
+    console.log('🚀 ~ getHotels ~ data:', data);
+    dispatch(submitFormAndGetHotelsAsync());
+  };
 
   return (
     <Box>
       <Box marginBottom={1}>
         <Form
-          onSubmit={() => {}}
+          onSubmit={getHotels}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <Grid2 container spacing={2} alignItems="center">

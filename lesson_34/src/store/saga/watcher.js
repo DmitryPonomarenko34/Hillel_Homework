@@ -1,9 +1,9 @@
 import { takeEvery } from 'redux-saga/effects';
 // Import
-import { callGetDestinitionWorker, callAddBookingWorker } from './workers';
-import { getDestinitionAsync, addBookingAsync } from './asyncActions';
+import { callGetDestinitionWorker, callSubmitFormAndGetHotelsWorker } from './workers';
+import { getDestinitionAsync, submitFormAndGetHotelsAsync } from './asyncActions';
 
 export function* bookingWatcher() {
   yield takeEvery(getDestinitionAsync.type, callGetDestinitionWorker);
-  yield takeEvery(addBookingAsync.type, callAddBookingWorker);
+  yield takeEvery(submitFormAndGetHotelsAsync.type, callSubmitFormAndGetHotelsWorker);
 }
