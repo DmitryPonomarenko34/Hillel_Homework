@@ -1,6 +1,6 @@
 # Run project:
-npm run dev
-npm run server
+- npm run dev
+- npm run server
 
 # React + Vite
 
