@@ -3,16 +3,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import mockImg from '../../public/mock.png';
 
 export default function HotelCard({ name, address, city, state, country_code }) {
   return (
-    <Card sx={{ width: '100%', height: '100%' }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-      />
+    <Card sx={{ width: '100%' }}>
+      <CardMedia component="img" alt="green iguana" height="140" image={mockImg} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
